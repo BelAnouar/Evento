@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Image extends Model
 {
     use HasFactory;
-    protected $fillable = ["name"];
-
-    public function events()
+    protected $fillable = ['image', 'imageable_id', 'imageable_type'];
+    public function imageable()
     {
-        return $this->hasMany(Event::class, "category_id");
+        return $this->morphTo();
     }
 }

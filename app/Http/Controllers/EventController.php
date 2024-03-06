@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Event;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -13,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::paginate(6);
+        $events = Event::with('image')->paginate(6);
+
         return view('event.index', ['events' => $events]);
     }
 
@@ -36,20 +38,28 @@ class EventController extends Controller
             $uploadedImage = $request->file('imageEvent');
 
             $filename = date('YmdHi') . $uploadedImage->getClientOriginalName();
-            $uploadedImage->move(public_path('images'), $filename);
+            $uploadedImage->storeAs('images', $filename, 'public');
 
-            $data['image'] = $filename;
 
-            $event = new Event();
-            $event->title = $request->title;
-            $event->description = $request->description;
-            $event->date = $request->date;
-            $event->location = $request->location;
-            $event->category_id = $request->category;
-            $event->available_seats = $request->available_seats;
 
+
+
+            $event = Event::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'date' => $request->date,
+                'location' => $request->location,
+                'category_id' => $request->category,
+                'available_seats' => $request->available_seats,
+            ]);
+
+
+            $event->image()->create([
+                'image' => $filename
+            ]);
             $event->save();
         }
+        return redirect()->back();
     }
 
     /**
@@ -57,7 +67,9 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::with("category", "image")->findOrfail($id);
+
+        return  view("event.show", ["event" => $event]);
     }
 
     /**
@@ -65,7 +77,9 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::findOrfail($id);
+        $categories = Categories::all();
+        return  view("event.edit", ["event" => $event, "categories" => $categories]);
     }
 
     /**
@@ -73,7 +87,19 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+
+        $event->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'date' => $request->date,
+            'location' => $request->location,
+            'category_id' => $request->category,
+            'available_seats' => $request->available_seats,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +107,7 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Event::destroy($id);
+        return back();
     }
 }

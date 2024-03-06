@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -21,11 +23,14 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name("home");
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
 Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
+Route::delete('/event/{event}', [EventController::class, 'destroy'])->name('event.destroy');
+Route::get('/event/{event}/edit', [EventController::class, 'edit'])->name('event.edit');
+Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
+Route::put('/event/{event}', [EventController::class, 'update'])->name('event.update');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::put('/Aprouve/{id}', [DashboardController::class, 'Update'])->name('Aprouve');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,6 +43,8 @@ require __DIR__ . '/auth.php';
 
 Route::get("auth/{provide}", [SocialiteController::class, "redirectTo"]);
 Route::get("auth/{provide}/callback", [SocialiteController::class, "handle"]);
+
+Route::post("/checkout", [checkoutController::class, "checkout"]);
 
 Route::get('/admin', function () {
     return view("admin");

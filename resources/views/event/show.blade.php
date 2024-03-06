@@ -62,140 +62,84 @@
             </div>
         </div>
     </header>
-    <main>
 
-        <section class="p-5 bg-contain bg-primary-50 bg-dotted-pattern md:p-10">
-            <div class="grid grid-cols-1 gap-8 wrapper md:grid-cols-2 2xl:gap-8">
-                <div class="flex flex-col justify-center gap-8">
-                    <h1 class="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl text-primary-700">Lorem ipsum
-                        dolor sit amet consectetur adipisicing elit.</h1>
-                    <p class="text-base text-gray-600 md:text-lg">
-                        Unlock valuable insights from over 4,000 mentors at top-tier companies within our thriving
-                        global community.</p>
-                    <button
-                        class="px-6 py-2 text-white transition duration-300 rounded-full bg-primary-700 hover:bg-primary-600 focus:outline-none">
-                        <a href="#events">Explore Now</a>
-                    </button>
-                </div>
-
-
-                <div class="relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-
-                    <div class="relative z-10">
-                        <img class="object-cover w-full h-full rounded-md"
-                            src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/hero/01.webp"
-                            alt="Salesforce">
-                    </div>
-
-
-                    <div class="absolute top-0 right-0 z-20 w-60">
-                        <video class="object-cover w-full h-full rounded-md " width="100%" autoplay=""
-                            playsinline="" muted="" loop="" preload="metadata">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/slack/04.webm"
-                                type="video/webm">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/slack/04.mp4"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-
-                    <div class="absolute z-30 top-1/4 left-1/4">
-                        <video class="object-cover w-full h-full rounded-md" autoplay playsinline muted loop
-                            preload="metadata">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/hero/03.webm"
-                                type="video/webm">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/hero/03.mp4"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-
-                    <div class="absolute bottom-0 right-0 z-40 w-52">
-                        <video class="object-cover w-full h-full rounded-md" width="100%" autoplay=""
-                            playsinline="" muted="" loop="" preload="metadata">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/slack/03.webm"
-                                type="video/webm">
-                            <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/slack/03.mp4"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-
-                </div>
-            </div>
-        </section>
-
-
-        <section class="flex flex-col w-full gap-8 p-3 my-8 max-w-7xl lg:mx-auto md:px-10 xl:px-0 md:gap-12">
-
-
-            <div class="flex flex-col w-full gap-5 md:flex-row">
-                <div class="flex items-center min-h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg></div>
-                    <input 
-                        type="text"
-                        placeholder="Search"
-                        class="rounded-full outline-none p-regular-16 bg-gray-50 placeholder:text-gray-500 focus:border-0 focus:ring-0 focus:ring-offset-0"
-                    />
-                </div>
-            </div>
-            
-            <div class="flex flex-col items-center gap-10">
-                <ul class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-                    @foreach ($events as $event)
-                        
-                    <li class="flex justify-center">
-                        <div
-                            class="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
-                            <a class="flex-grow bg-center bg-cover flex-center bg-gray-50 text-grey-500 bg-[url('https://daily-now-res.cloudinary.com/image/upload/f_auto,q_auto/v1669894488/a/fallback/daily_GitHub1-1')]">
-                            </a>
-
-
-                            <div class="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
-                                <div class="flex gap-2">
-                                    <span class="px-4 py-1 text-sm font-semibold text-green-600 bg-green-100 rounded-full">
-                                        FREE
-                                    </span>
-                                    <p class="px-4 py-1 text-sm font-semibold text-gray-500 rounded-full bg-gray-500/10 line-clamp-1">
-                                        {{ $event->category->name }}
-                                    </p>
-                                </div>
-                            
-                                <p class="text-lg font-medium text-gray-500 md:text-xl">
-                                    {{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }}
-                                </p>
-                            
-                                <a href="{{ route('event.show', ['event' => $event]) }}" class="flex-1 text-lg font-medium text-black md:text-xl line-clamp-2">
-                                    {{ $event->title }}
-                                </a>
-                            
-                                <div class="flex justify-between w-full">
-                                    <p class="text-sm font-medium text-gray-600 md:text-base">
-                                        Anwar
-                                        {{-- {{ $event->organizer->firstName }} {{ $event->organizer->lastName }} --}}
-                                    </p>
-                                </div>
-                            </div>
-                            
+    <section class="flex bg-contain justify-evenly bg-primary-50 bg-dotted-pattern">
+        <div class="grid grid-cols-1 p-5 md:p-10 md:grid-cols-2 2xl:max-w-7xl">
+    
+            <img width="1000" height="1000" src="{{ asset('storage/images/' . $event->image->image) }}"
+                alt="hero image" class="h-full min-h-[300px] object-cover object-center" />
+    
+            <div class="flex flex-col w-full gap-8 p-5 md:p-10">
+                <div class="flex flex-col gap-6">
+                    <h2 class='h2-bold'>{{ $event->title }}</h2>
+    
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <div class="flex gap-3">
+                            <p class="px-5 py-2 text-green-700 rounded-full p-bold-20 bg-green-500/10">
+                                {{ $event->isFree ? 'FREE' : 'Get Ticket' }}
+                            </p>
+                            <p class="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
+                                {{ $event->category->name }}
+                            </p>
                         </div>
-                    </li>
-                    @endforeach
-                </ul>
+    
+                        <p class="mt-2 ml-2 p-medium-18 sm:mt-0">
+                            by <span class="text-primary-500">
+                                anw</span>
+                        </p>
+                    </div>
+                </div>
+    
+                <form action="/checkout" method="post">
+                    @csrf
+                    <input type="hidden" name="idEvent" value="{{$event->id}}">
+                    <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-600">
+                        Get Ticket
+                    </button>
+                    
+                </form>
+    
+                <div class="flex flex-col gap-5">
+                    <div class='flex gap-2 md:gap-3'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                          </svg>
+                          
+    
+                        <div class="flex flex-wrap items-center p-medium-16 lg:p-regular-20">
+                            <p>
+                                {{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }} -
+                                {{ \Carbon\Carbon::parse($event->date)->format('H:i:s') }}
+                            </p>
+                        </div>
+                    </div>
+    
+                    <div class="flex items-center gap-3 p-regular-20">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                          </svg>
+                          
+    
+                        <p class="p-medium-16 lg:p-regular-20">{{ $event->location }}</p>
+                    </div>
+                </div>
+    
+                <div class="flex flex-col gap-2">
+                    <p class="p-bold-20 text-grey-600">What You'll Learn:</p>
+                    <p class="p-medium-16 lg:p-regular-18">{{ $event->description }}</p>
+                    <p class="underline truncate p-medium-16 lg:p-regular-18 text-primary-500">urls</p>
+                </div>
             </div>
+        </div>
+    </section>
+    
 
 
 
-        </section>
 
 
 
-    </main>
     <footer class="border-t">
         <div
             class="flex flex-col w-full gap-4 p-5 text-center flex-center max-w-7xl lg:mx-auto md:px-10 xl:px-0 flex-between sm:flex-row">
@@ -246,23 +190,7 @@
             <p>2023 Evently. All Rights reserved.</p>
         </div>
     </footer>
-    {{-- <div class="min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="z-10 p-6 text-right sm:fixed sm:top-0 sm:right-0">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            
-        </div> --}}
 </body>
 
 </html>
