@@ -18,58 +18,48 @@
             </form>
             
         </div>
-    </div><main class="main">
-                <div class="table-data">
-                    <div class="order">
-                        <div class="head">
-                            <h3>Categories :</h3>
-                            <i class='bx bx-search'></i>
-                            <i class='bx bx-filter'></i>
-                        </div>
-
-
-                        <div>
-
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($categories as $categorie)
-                                        <tr>
-                                            <td>
-                                                <p class="text-sm text-gray-500">{{ $categorie->name }}</p>
-                                            </td>
-
-                                            <td>
-                                                <a href="/category/{{$categorie->id}}">edit</a>
-
-
-
-                                                <a href="#"
-                                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this medicine?')) document.getElementById('deleteMedicineForm{{ $categorie->id }}').submit();">delete
-                                                    <form id="deleteMedicineForm{{ $categorie->id }}"
-                                                        action="{{ route('category.destroy', $categorie->id) }}"
-                                                        method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-
-
-
-
-                        </div>
-
-                    </div>
+    </div><main class="w-full mx-w-4xl">
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Categories :</h3>
+               
                 </div>
+        
+                <div class="mt-4"> 
+                    <table class="min-w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2 border-b">Name</th>
+                                <th class="px-4 py-2 border-b">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $categorie)
+                                <tr>
+                                    <td class="px-4 py-2">
+                                        <p class="text-sm text-gray-500">{{ $categorie->name }}</p>
+                                    </td>
+        
+                                    <td class="px-4 py-2">
+                                        <a href="/category/{{$categorie->id}}" class="text-blue-500 hover:underline">edit</a>
+        
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this medicine?')) document.getElementById('deleteMedicineForm{{ $categorie->id }}').submit();" class="text-red-500 hover:underline">delete</a>
+        
+                                        <form id="deleteMedicineForm{{ $categorie->id }}"
+                                            action="{{ route('category.destroy', $categorie->id) }}"
+                                            method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
             </main>
 </x-app-layout>

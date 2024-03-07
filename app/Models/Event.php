@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
+
 class Event extends Model
 {
     protected $fillable = [
@@ -15,6 +18,7 @@ class Event extends Model
         'category_id',
         'available_seats',
         'is_approved',
+        'reservationApproval',
     ];
     use HasFactory;
 
@@ -27,5 +31,16 @@ class Event extends Model
     public function category()
     {
         return $this->belongsTo(Categories::class, "category_id");
+    }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, "event_id");
+    }
+
+
+
+    public function scopeTitle(Builder $query, string $title): Builder
+    {
+        return $query->where('title', 'LIKE', '%' . $title . '%');
     }
 }

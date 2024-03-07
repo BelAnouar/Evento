@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('event_id')->constrained();
+            $table->string('status')->default('pending')->nullable(false);
+            $table->enum('status', ['accepted', 'pending', 'rejected'])->default('pending')->change();
+
             $table->timestamps();
         });
     }

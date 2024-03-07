@@ -82,7 +82,7 @@
                 <div class="relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 
                     <div class="relative z-10">
-                        <img class="object-cover w-full h-full rounded-md"
+                        <img class="object-cover w-full rounded-md h-96"
                             src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/hero/01.webp"
                             alt="Salesforce">
                     </div>
@@ -100,7 +100,7 @@
                     </div>
 
 
-                    <div class="absolute z-30 top-1/4 left-1/4">
+                    <div class="absolute z-30 top-1/3 left-1/4">
                         <video class="object-cover w-full h-full rounded-md" autoplay playsinline muted loop
                             preload="metadata">
                             <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/hero/03.webm"
@@ -112,7 +112,7 @@
                     </div>
 
 
-                    <div class="absolute bottom-0 right-0 z-40 w-52">
+                    <div class="absolute bottom-0 right-0 z-40 w-64 h-44">
                         <video class="object-cover w-full h-full rounded-md" width="100%" autoplay=""
                             playsinline="" muted="" loop="" preload="metadata">
                             <source src="https://d2s90tzqqa0vkb.cloudfront.net/projects/salesforce/slack/03.webm"
@@ -133,63 +133,72 @@
 
 
             <div class="flex flex-col w-full gap-5 md:flex-row">
-                <div class="flex items-center min-h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg></div>
-                    <input 
-                        type="text"
-                        placeholder="Search"
-                        class="rounded-full outline-none p-regular-16 bg-gray-50 placeholder:text-gray-500 focus:border-0 focus:ring-0 focus:ring-offset-0"
-                    />
-                </div>
+                <form action="/" method="get">
+                    <div
+                        class="flex items-center min-h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
+
+                        <input type="text" placeholder="Search" name="title"
+                            class="rounded-full outline-none p-regular-16 bg-gray-50 placeholder:text-gray-500 focus:border-0 focus:ring-0 focus:ring-offset-0" />
+                        <div>
+                            <button type="submit" class="h-10 btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                </svg></button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            
+
             <div class="flex flex-col items-center gap-10">
                 <ul class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
                     @foreach ($events as $event)
-                        
-                    <li class="flex justify-center">
-                        <div
-                            class="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
-                            <a class="flex-grow bg-center bg-cover flex-center bg-gray-50 text-grey-500 bg-[url('https://daily-now-res.cloudinary.com/image/upload/f_auto,q_auto/v1669894488/a/fallback/daily_GitHub1-1')]">
-                            </a>
-
-
-                            <div class="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
-                                <div class="flex gap-2">
-                                    <span class="px-4 py-1 text-sm font-semibold text-green-600 bg-green-100 rounded-full">
-                                        FREE
-                                    </span>
-                                    <p class="px-4 py-1 text-sm font-semibold text-gray-500 rounded-full bg-gray-500/10 line-clamp-1">
-                                        {{ $event->category->name }}
-                                    </p>
-                                </div>
-                            
-                                <p class="text-lg font-medium text-gray-500 md:text-xl">
-                                    {{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }}
-                                </p>
-                            
-                                <a href="{{ route('event.show', ['event' => $event]) }}" class="flex-1 text-lg font-medium text-black md:text-xl line-clamp-2">
-                                    {{ $event->title }}
+                        <li class="flex justify-center">
+                            <div
+                                class="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
+                                <a
+                                    class="flex-grow bg-center bg-cover flex-center bg-gray-50 text-grey-500 bg-[url('https://daily-now-res.cloudinary.com/image/upload/f_auto,q_auto/v1669894488/a/fallback/daily_GitHub1-1')]">
                                 </a>
-                            
-                                <div class="flex justify-between w-full">
-                                    <p class="text-sm font-medium text-gray-600 md:text-base">
-                                        Anwar
-                                        {{-- {{ $event->organizer->firstName }} {{ $event->organizer->lastName }} --}}
+
+
+                                <div class="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-4 py-1 text-sm font-semibold text-green-600 bg-green-100 rounded-full">
+                                            FREE
+                                        </span>
+                                        <p
+                                            class="px-4 py-1 text-sm font-semibold text-gray-500 rounded-full bg-gray-500/10 line-clamp-1">
+                                            {{ $event->category->name }}
+                                        </p>
+                                    </div>
+
+                                    <p class="text-lg font-medium text-gray-500 md:text-xl">
+                                        {{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }}
                                     </p>
+
+                                    <a href="{{ route('event.show', ['event' => $event]) }}"
+                                        class="flex-1 text-lg font-medium text-black md:text-xl line-clamp-2">
+                                        {{ $event->title }}
+                                    </a>
+
+                                    <div class="flex justify-between w-full">
+                                        <p class="text-sm font-medium text-gray-600 md:text-base">
+                                            Anwar
+                                            {{-- {{ $event->organizer->firstName }} {{ $event->organizer->lastName }} --}}
+                                        </p>
+                                    </div>
                                 </div>
+
                             </div>
-                            
-                        </div>
-                    </li>
+                        </li>
                     @endforeach
+
                 </ul>
             </div>
 
-
+            {{ $events->links() }}
 
         </section>
 

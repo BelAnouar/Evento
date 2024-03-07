@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="p-2 text-left md:block">
-                            <h2 class="text-sm font-semibold text-gray-800">John Doe</h2>
+                            <h2 class="text-sm font-semibold text-gray-800"> anwar</h2>
                             <p class="text-xs text-gray-500">Administrator</p>
                         </div>
                     </button>
@@ -91,13 +91,13 @@
                                 class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50">Settings</a>
                         </li>
                         <li>
-                            <form method="POST" action="">
-                                <a role="menuitem"
-                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
-                                    onclick="event.preventDefault();
-                                    this.closest('form').submit();">
+
+                            <form method="POST" action="logout">
+                                @csrf
+                                <button type="submit"
+                                    class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer">
                                     Log Out
-                                </a>
+                                    </buttonty>
                             </form>
                         </li>
                     </ul>
@@ -113,9 +113,9 @@
 
             <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
                 <div class="relative block w-full">
-                    <div role="button"
+                    <div
                         class="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                        <button type="button"
+                        <a href="/dashboard"
                             class="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-700 hover:text-blue-gray-900">
                             <div class="grid mr-4 place-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -129,21 +129,14 @@
                                 class="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-900">
                                 Dashboard
                             </p>
-                            <span class="ml-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" aria-hidden="true"
-                                    class="w-4 h-4 mx-auto transition-transform">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-                                </svg>
-                            </span>
-                        </button>
+
+                        </a>
                     </div>
-                   
+
                 </div>
-              
+
                 <hr class="my-2 border-blue-gray-50" />
-                <div role="button"
+                <a href="/event"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -153,15 +146,10 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    Inbox
-                    <div class="grid ml-auto place-items-center justify-self-end">
-                        <div
-                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                            <span class="">14</span>
-                        </div>
-                    </div>
-                </div>
-                <div role="button"
+                    Event
+
+                </a>
+                <a href="profile"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -172,7 +160,7 @@
                         </svg>
                     </div>
                     Profile
-                </div>
+                </a>
                 <div role="button"
                     class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                     <div class="grid mr-4 place-items-center">
@@ -185,58 +173,23 @@
                     </div>
                     Settings
                 </div>
-                <div role="button"
-                    class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                    <div class="grid mr-4 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true" class="w-5 h-5">
-                            <path fill-rule="evenodd"
-                                d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    Log Out
-                </div>
+                <form method="POST" action="logout">
+                    <button type="submit"
+                        class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                        @csrf
+                        <div class="grid mr-4 place-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true" class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        Log Out
+                    </button>
+                </form>
             </nav>
-            <div role="alert"
-                class="relative flex w-full px-4 py-4 mt-auto text-base text-white bg-gray-900 rounded-lg font-regular">
-                <div class="mr-12">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" aria-hidden="true" class="w-12 h-12 mb-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25">
-                        </path>
-                    </svg>
-                    <h6
-                        class="block mb-1 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
-                        Upgrade to PRO
-                    </h6>
-                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-inherit opacity-80">
-                        Upgrade to Material Tailwind PRO and get even more components,
-                        plugins, advanced features and premium.
-                    </p>
-                    <div class="flex gap-3 mt-4">
-                        <a href="#"
-                            class="block font-sans text-sm antialiased font-medium leading-normal text-inherit opacity-80">
-                            Dismiss
-                        </a>
-                        <a href="#"
-                            class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
-                            Upgrade Now
-                        </a>
-                    </div>
-                </div>
-                <button
-                    class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                    type="button">
-                    <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" class="w-6 h-6" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </span>
-                </button>
-            </div>
+
         </div>
         {{ $slot }}
 
@@ -249,8 +202,8 @@
     <footer>
 
     </footer>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
 </body>
 
 </html>

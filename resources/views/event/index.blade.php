@@ -33,10 +33,7 @@
                                                 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                                                 Recent Events
                                             </h5>
-                                            <p
-                                                class="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
-                                                These are details about the last transactions
-                                            </p>
+                                      
                                         </div>
                                         {{-- <div class="flex w-full gap-2 shrink-0 md:w-max">
                                             <div class="w-full md:w-72">

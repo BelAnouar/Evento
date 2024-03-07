@@ -8,6 +8,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +46,13 @@ Route::get("auth/{provide}", [SocialiteController::class, "redirectTo"]);
 Route::get("auth/{provide}/callback", [SocialiteController::class, "handle"]);
 
 Route::post("/checkout", [checkoutController::class, "checkout"]);
+Route::put("/checkout/{id}/update", [checkoutController::class, "update"])->name("checkout.update");
 
 Route::get('/admin', function () {
     return view("admin");
 });
 
-
+Route::get('settings', [SettingController::class, "index"]);
+Route::put('/settings/update', [SettingController::class, "update"]);
+Route::get('/settings/{id}', [SettingController::class, "show"]);
 Route::resource("/category", CategorieController::class);
