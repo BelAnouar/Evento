@@ -56,3 +56,8 @@ Route::get('settings', [SettingController::class, "index"]);
 Route::put('/settings/update', [SettingController::class, "update"]);
 Route::get('/settings/{id}', [SettingController::class, "show"]);
 Route::resource("/category", CategorieController::class);
+
+
+Route::get('/tik', function () {
+    return view("ticket");
+});
