@@ -7,20 +7,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+// use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    protected $guard_name = ['web', 'api'];
+
     protected $fillable = [
+
         'name',
         'email',
         'password',
+        'type', 'access'
+
     ];
 
     /**
@@ -43,6 +50,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    protected $with = ['roles'];
+
+    protected $table = 'users';
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
@@ -50,5 +60,18 @@ class User extends Authenticatable
     public function reservation()
     {
         return $this->hasOne(Reservation::class, 'user_id');
+    }
+
+
+    public function roles()
+    {
+        return $this->belongsToMany(\Spatie\Permission\Models\Role::class, 'model_has_roles', 'model_id', 'role_id');
+    }
+
+
+
+    public function Events()
+    {
+        return  $this->hasMany(Event::class, "user_id");
     }
 }

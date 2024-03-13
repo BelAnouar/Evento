@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Models\Categories;
 use App\Models\Event;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -31,7 +33,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
 
         if ($request->file('imageEvent')) {
@@ -51,6 +53,9 @@ class EventController extends Controller
                 'location' => $request->location,
                 'category_id' => $request->category,
                 'available_seats' => $request->available_seats,
+                "start_time" => $request->startTime,
+                "end_time" => $request->endTime,
+                "user_id" => Auth::user()->id
             ]);
 
 

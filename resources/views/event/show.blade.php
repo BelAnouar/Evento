@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="">
+<body class="bg-gray-200/10">
     <header class="w-full border-b ">
         <div class="flex items-center justify-between w-full p-3 max-w-7xl lg:mx-auto md:px-10 xl:px-0">
             <a href="/" class="">

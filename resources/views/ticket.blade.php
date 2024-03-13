@@ -32,7 +32,7 @@ html {
 .image {
 	height: 250px;
 	width: 250px;
-	background-image: url("https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg");
+	background-image: url("{{ asset('storage/images/' . $image->image) }}");
 	background-size: contain;
 	opacity: 0.85;
 }   
@@ -200,6 +200,7 @@ html {
 				</p>
 			</div>
 		</div>
+		
 		<div class="ticket-info">
 			<p class="date">
 				<span>TUESDAY</span>
@@ -207,35 +208,34 @@ html {
 				<span>2021</span>
 			</p>
 			<div class="show-name">
-				<h1>SOUR Prom</h1>
-				<h2>Olivia Rodrigo</h2>
+			
+				<h2>{{$title}}</h2>
 			</div>
 			<div class="time">
-				<p>8:00 PM <span>TO</span> 11:00 PM</p>
-				<p>DOORS <span>@</span> 7:00 PM</p>
+				<p>{{$startTime}} PM <span>TO</span> {{$endTime}} PM</p>
+			
 			</div>
-			<p class="location"><span>East High School</span>
-				<span class="separator"><i class="far fa-smile"></i></span><span>Salt Lake City, Utah</span>
+			<p class="location"><span>Location:</span>
+				<span class="separator"></span><span>{{$location}}</span>
 			</p>
 		</div>
 	</div>
 	<div class="right">
 		<p class="admit-one">
-			<span>ADMIT ONE</span>
-			<span>ADMIT ONE</span>
-			<span>ADMIT ONE</span>
+			<span>Evento</span>
+			<span>Evento</span>
+			<span>Evento</span>
 		</p>
 		<div class="right-info-container">
 			<div class="show-name">
 				<h1>SOUR Prom</h1>
 			</div>
 			<div class="time">
-				<p>8:00 PM <span>TO</span> 11:00 PM</p>
-				<p>DOORS <span>@</span> 7:00 PM</p>
+				<p>{{$startTime}} PM <span>TO</span> {{$endTime}} PM</p>
+				
 			</div>
 			<div class="barcode">
-				<img src="https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb" alt="QR code">
-			</div>
+			{{!!$qrCode!!}}</div>
 			<p class="ticket-number">
 				#20030220
 			</p>

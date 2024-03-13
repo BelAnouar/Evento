@@ -22,10 +22,7 @@
                         </label>
 
                         <div class="text-center">
-                            <div class="mt-2" x-show="! photoPreview">
-                                <img src="https://images.unsplash.com/photo-1531316282956-d38457be0993?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"
-                                    class="w-40 h-40 m-auto rounded-full shadow">
-                            </div>
+                            
 
                             <div class="mt-2" x-show="photoPreview" style="display: none;">
                                 <span class="block w-40 h-40 m-auto rounded-full shadow"
@@ -65,6 +62,22 @@
                     <label for='date' class='text-base-semibold text-light-2'>Date</label>
                     <div class=''>
                         <input type='datetime-local' id='date' name='date'
+                            class='w-full px-2 py-1 border-b-2 account-form_input no-focus border-primary-500 focus:outline-none focus:border-light-1'
+                            value='{{ old('date', $fieldValues['date'] ?? '') }}'>
+                    </div>
+                </div>
+                <div class='flex flex-col w-full gap-3'>
+                    <label for='date' class='text-base-semibold text-light-2'>start time</label>
+                    <div class=''>
+                        <input type='time' id='date' name='startTime'
+                            class='w-full px-2 py-1 border-b-2 account-form_input no-focus border-primary-500 focus:outline-none focus:border-light-1'
+                            value='{{ old('date', $fieldValues['date'] ?? '') }}'>
+                    </div>
+                </div>
+                <div class='flex flex-col w-full gap-3'>
+                    <label for='date' class='text-base-semibold text-light-2'>end time</label>
+                    <div class=''>
+                        <input type='time' id='date' name='endTime'
                             class='w-full px-2 py-1 border-b-2 account-form_input no-focus border-primary-500 focus:outline-none focus:border-light-1'
                             value='{{ old('date', $fieldValues['date'] ?? '') }}'>
                     </div>

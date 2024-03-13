@@ -13,12 +13,12 @@
 
 
                 <button type="submit"
-                    class="bg-[#99BC85] font-semibold text-white text-md px-3 py-1 rounded-full w-full max-w-sm">Add
+                    class="bg-[#99BC85] font-semibold text-white text-md px-3 py-1 rounded-full w-fit max-w-sm">Add
                     Category</button>
             </form>
             
         </div>
-    </div><main class="w-full mx-w-4xl">
+    </div><main class="w-full mr-10 mx-w-4xl">
         <div class="table-data">
             <div class="order">
                 <div class="head">
@@ -44,9 +44,9 @@
                                     <td class="px-4 py-2">
                                         <a href="/category/{{$categorie->id}}" class="text-blue-500 hover:underline">edit</a>
         
-                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this medicine?')) document.getElementById('deleteMedicineForm{{ $categorie->id }}').submit();" class="text-red-500 hover:underline">delete</a>
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this category?')) document.getElementById('deleteCategoryForm{{ $categorie->id }}').submit();" class="text-red-500 hover:underline">delete</a>
         
-                                        <form id="deleteMedicineForm{{ $categorie->id }}"
+                                        <form id="deleteCategoryForm{{ $categorie->id }}"
                                             action="{{ route('category.destroy', $categorie->id) }}"
                                             method="POST" style="display: none;">
                                             @csrf

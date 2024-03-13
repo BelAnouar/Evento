@@ -18,7 +18,8 @@ class Event extends Model
         'category_id',
         'available_seats',
         'is_approved',
-        'reservationApproval',
+        'start_time', 'end_time',
+        'reservationApproval', 'user_id'
     ];
     use HasFactory;
 
@@ -42,5 +43,11 @@ class Event extends Model
     public function scopeTitle(Builder $query, string $title): Builder
     {
         return $query->where('title', 'LIKE', '%' . $title . '%');
+    }
+
+
+    public function Organizer()
+    {
+        return $this->belongsTo(User::class, "user_id");
     }
 }

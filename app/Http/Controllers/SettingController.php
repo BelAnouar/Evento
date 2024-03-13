@@ -21,9 +21,7 @@ class SettingController extends Controller
 
         $event = Event::find($request->idEvent);
 
-        if (!$event) {
-            return response()->json(['error' => 'Event not found'], 404);
-        }
+
 
         try {
             $event->update([

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class SocialiteController extends Controller
                 Auth::login($finduser);
                 return redirect()->route("home");
             } else {
-                $newUser = User::create([
+                $newUser = Client::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'social_id' => $user->id,
@@ -34,6 +35,7 @@ class SocialiteController extends Controller
                     'password' => Hash::make('my-google')
 
                 ]);
+                $newUser->assignRole("client");
                 Auth::login($newUser);
                 return redirect()->route("home");
             }

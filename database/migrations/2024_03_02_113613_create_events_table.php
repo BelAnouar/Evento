@@ -19,7 +19,10 @@ return new class extends Migration
             $table->dateTime('date');
             $table->string('location');
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->integer('available_seats');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->boolean('is_approved')->default(false);
             $table->string('reservationApproval')->default('automatic')->nullable(false);
             $table->enum('reservationApproval', ['automatic', 'manual'])->default('automatic')->change();
